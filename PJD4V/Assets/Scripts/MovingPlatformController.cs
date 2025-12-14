@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class MovingPlatformController : MonoBehaviour
 {
@@ -67,11 +63,7 @@ public class MovingPlatformController : MonoBehaviour
 
         if (shouldFlip)
         {
-            if (_isReturning)
-                transform.localScale =
-                    new Vector3(-_originalLocalScaleX, transform.localScale.y, transform.localScale.z);
-            else
-                transform.localScale = new Vector3(_originalLocalScaleX, transform.localScale.y, transform.localScale.z);
+            transform.localScale = _isReturning ? new Vector3(-_originalLocalScaleX, transform.localScale.y, transform.localScale.z) : new Vector3(_originalLocalScaleX, transform.localScale.y, transform.localScale.z);
         }
 
         transform.position += (Vector3)_currentMoveDirection * (moveSpeed * Time.fixedDeltaTime);
